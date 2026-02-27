@@ -1,0 +1,207 @@
+/* VARIABLES & RESET */
+:root {
+    --primary-green: #16a34a; /* Hijau Utama */
+    --dark-green: #14532d;
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --danger: #ef4444; /* Merah untuk habis/non-aktif */
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* LAYOUT */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark-green);
+    margin-bottom: 40px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* CARD STYLE (STATIS - TANPA ANIMASI GERAK) */
+.menu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Shadow statis */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+}
+
+/* IMAGE SECTION */
+.card-image {
+    position: relative;
+    height: 220px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* BADGES (Kategori & Status) */
+.badge-container {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    pointer-events: none; /* Agar klik tembus ke gambar */
+}
+
+.badge {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.badge-category {
+    background: #ffffff;
+    color: var(--primary-green);
+}
+
+/* Logika Warna Badge Status */
+.badge-status.ready {
+    background: var(--primary-green);
+    color: white;
+}
+
+.badge-status.empty {
+    background: var(--danger);
+    color: white;
+}
+
+/* CONTENT SECTION */
+.card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Agar footer terdorong ke bawah */
+}
+
+.menu-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+    color: var(--text-main);
+}
+
+.menu-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    
+    /* Membatasi teks jadi 3 baris lalu titik-titik (...) */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    flex-grow: 1;
+
+    /* Pastikan kartu punya tinggi yang rapi */
+.menu-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden; /* Ini kuncinya: memotong gambar yang lewat dari garis */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); 
+}
+
+/* Area Gambar harus punya tinggi TETAP */
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 220px; /* Atur tinggi tetap, misal 220px */
+    background-color: #f3f4f6;
+}
+
+/* Gambar dipaksa memenuhi area tanpa gepeng */
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* PENTING: Memotong gambar agar pas di kotak tanpa merusak rasio */
+    object-position: center; /* Fokus gambar di tengah */
+    display: block;
+}
+}
+
+/* FOOTER SECTION */
+.card-footer {
+    padding-top: 15px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.price-tag {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: var(--primary-green);
+}
+
+.btn-order {
+    background-color: white;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+/* Hanya tombol yang berubah warna saat di hover */
+.btn-order:hover {
+    background-color: var(--primary-green);
+    color: white;
+}
+
+/* Jika tombol disabled (stok habis) */
+.btn-order.disabled {
+    border-color: var(--text-muted);
+    color: var(--text-muted);
+    pointer-events: none;
+    background-color: #f1f5f9;
+}

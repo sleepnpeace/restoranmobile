@@ -1,0 +1,120 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+/* CATEGORY & GRID */
+.category-section { margin-bottom: 40px; }
+.category-name {
+    font-size: 1.2rem; margin-bottom: 20px; color: #166534;
+    border-left: 5px solid #22c55e; padding-left: 12px; font-weight: 800; text-transform: uppercase;
+}
+.menu-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+/* CARDS */
+.menu-card {
+    background: white; border-radius: 16px; border: 1px solid #e2e8f0;
+    overflow: hidden; display: flex; flex-direction: column; transition: 0.2s;
+}
+.menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+.card-image { height: 150px; cursor: pointer; position: relative; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; }
+.stock-badge {
+    position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9);
+    padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 800;
+}
+.card-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
+.menu-name { font-weight: 700; margin-bottom: 5px; color: #1e293b; }
+.price-tag { color: #16a34a; font-weight: 800; margin-bottom: 15px; }
+
+/* BUTTONS IN CARD */
+.action-group { display: flex; gap: 8px; margin-top: auto; }
+.btn-info-detail { flex: 1; padding: 10px; border-radius: 10px; border: none; background: #f1f5f9; font-weight: 700; cursor: pointer; font-size: 11px; }
+.btn-order { flex: 2; padding: 10px; border-radius: 10px; border: none; background: #16a34a; color: white; font-weight: 700; cursor: pointer; font-size: 11px; }
+
+/* SIDEBAR CART */
+.sidebar-cart {
+    position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
+    background: white; border-left: 4px solid #16a34a; padding: 25px;
+    transition: 0.4s; z-index: 1100; display: flex; flex-direction: column;
+}
+.sidebar-cart.active { right: 0; }
+.btn-close-cart { background: none; border: none; color: #94a3b8; font-weight: 800; cursor: pointer; margin-bottom: 20px; text-align: left; }
+
+/* MODAL SYSTEM */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(15,23,42,0.6); backdrop-filter: blur(8px); align-items: center; justify-content: center;
+}
+.modal-content-small {
+    background: white; padding: 35px; border-radius: 24px; width: 100%; max-width: 400px;
+}
+.qty-container {
+    display: flex; align-items: center; justify-content: center; gap: 25px;
+    background: #f8fafc; padding: 15px; border-radius: 20px; margin-bottom: 25px;
+}
+.btn-qty {
+    width: 50px; height: 50px; border: 1px solid #e2e8f0; border-radius: 15px;
+    background: white; font-weight: 800; font-size: 20px; cursor: pointer;
+}
+#modal-qty { font-size: 2rem; font-weight: 800; color: #1e293b; }
+
+/* INPUTS */
+.label-form { display: block; font-size: 11px; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 8px; }
+.input-minimal {
+    width: 100%; padding: 14px; background: #ffffff; border: 1px solid #e2e8f0;
+    border-radius: 12px; font-size: 14px; margin-bottom: 15px; outline: none;
+}
+.btn-submit {
+    width: 100%; padding: 16px; background: #16a34a; color: white; border: none;
+    border-radius: 14px; font-weight: 800; cursor: pointer; font-size: 16px;
+}
+
+/* ... (kode CSS sebelumnya tetap sama) ... */
+
+/* HIDE SCROLLBAR KIT */
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+/* Pastikan body juga bersih */
+body::-webkit-scrollbar {
+    display: none;
+}
+
+/* MODAL SYSTEM (Update untuk Detail) */
+.modal {
+    display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+    background: rgba(15,23,42,0.6); backdrop-filter: blur(8px); align-items: center; justify-content: center;
+}
+.modal-content-small {
+    background: white; padding: 35px; border-radius: 24px; width: 100%; max-width: 400px;
+    /* Tambahkan scroll dalam modal jika konten kepanjangan */
+    max-height: 90vh;
+    overflow-y: auto;
+}
+.modal-content-small::-webkit-scrollbar { display: none; }
+
+/* FLOATING CART */
+.cart-toggle-btn {
+    position: fixed; bottom: 30px; right: 30px; width: 65px; height: 65px;
+    border-radius: 50%; background: #16a34a; color: white; border: none;
+    z-index: 999; cursor: pointer; box-shadow: 0 4px 20px rgba(22,163,74,0.4); font-size: 24px;
+}
+#cart-count {
+    position: absolute; top: 0; right: 0; background: #ef4444; color: white;
+    width: 24px; height: 24px; border-radius: 50%; font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center; border: 2px solid white;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .menu-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .sidebar-cart { width: 100%; right: -100%; }
+}
